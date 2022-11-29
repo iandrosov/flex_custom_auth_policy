@@ -25,5 +25,7 @@ in `config/local` directory. There are several configuration files required to d
 ```
 flex-custom-auth-policy.yaml - Inline mode combined configuration
 
-
+flex-custom-auth-local-definition.yaml - Resource mode policy definition
+flex-custom-auth-local-implementation.yaml - Resource mode policy implementation
+flex-custom-auth-local-policybinding.yaml - Resource mode policy binding
 ```
