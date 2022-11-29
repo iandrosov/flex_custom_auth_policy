@@ -1,0 +1,14 @@
+---
+apiVersion: gateway.mulesoft.com/v1alpha1
+kind: Extension
+metadata:
+  name: flex-custom-auth-local-definition
+spec:
+  extends:
+  - name: extension-authentication
+  - name: extension-definition
+  properties:
+    secret-value:
+      type: string
+  required:
+    - secret-value
