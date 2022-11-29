@@ -1,0 +1,45 @@
+---
+apiVersion: gateway.mulesoft.com/v1alpha1
+kind: Extension
+metadata:
+  name: flex-custom-auth-local-definition
+spec:
+  extends:
+    - name: extension-authentication
+    - name: extension-definition
+  properties:
+    secret-value:
+      type: string
+  required:
+    - secret-value
+---
+apiVersion: gateway.mulesoft.com/v1alpha1
+kind: Extension
+metadata:
+  name: flex-custom-auth-local-implementation
+spec:
+  extends:
+    - name: flex-custom-auth-local-definition
+    - name: envoy-filter
+    - name: proxy-wasm-filter
+  properties:
+    rootId:
+      type: string
+      default: main
+    implementation:
+      type: string
+      default: base64://<INSERT BASE64 ENCODED POLICY IMPLEMENTATION>
+---
+apiVersion: gateway.mulesoft.com/v1alpha1
+kind: PolicyBinding
+metadata:
+  name: flex-custom-auth-local-policybinding
+spec:
+  targetRef:
+    kind: ApiInstance
+    name: loan-api
+  policyRef:
+    kind: Extension
+    name: flex-custom-auth-local-implementation
+  config:
+    secret-value: "loan-example-value"

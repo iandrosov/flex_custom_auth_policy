@@ -1,0 +1,14 @@
+---
+apiVersion: gateway.mulesoft.com/v1alpha1
+kind: PolicyBinding
+metadata:
+  name: flex-custom-auth-local-policybinding
+spec:
+  targetRef:
+    kind: ApiInstance
+    name: loan-api
+  policyRef:
+    kind: Extension
+    name: flex-custom-auth-local-implementation
+  config:
+    secret-value: "loan-example-value"

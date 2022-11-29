@@ -1,0 +1,17 @@
+---
+apiVersion: gateway.mulesoft.com/v1alpha1
+kind: Extension
+metadata:
+  name: flex-custom-auth-local-implementation
+spec:
+  extends:
+    - name: flex-custom-auth-local-definition
+    - name: envoy-filter
+    - name: proxy-wasm-filter
+  properties:
+    rootId:
+      type: string
+      default: main
+    implementation:
+      type: string
+      default: base64://<INSERT BASE64 ENCODED POLICY IMPLEMENTATION>
