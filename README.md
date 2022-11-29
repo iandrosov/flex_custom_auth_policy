@@ -1,4 +1,4 @@
-# Flex Gateway custom authenticatio policy
+# Flex Gateway custom authentication policy
 
 ## Overview
 Example custom authentication policy for MuleSoft Flex Gateway using Rust SDK.
